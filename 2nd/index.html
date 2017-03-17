@@ -1,0 +1,190 @@
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript">
+function loadXML (url) {
+    if (window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest()
+    }
+    else {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+    }
+
+    try {
+      xmlhttp.open("GET", url, false)
+      xmlhttp.send()
+    } catch (e) {
+      if (xmlhttp.status != 200){
+        return ''
+      }
+    }
+
+    var xmlDoc = xmlhttp.responseXML
+
+    return xmlDoc
+}
+
+function validateXML (xmlSource) {
+    if (!xmlSource) {
+      alert('Error in XML')
+      return false
+    }
+
+    if (xmlSource === '') {
+      alert('Error in File Path')
+      return false
+    }
+
+    if (hasContents(xmlSource)) {
+      alert('No contents in XML')
+      return false
+    }
+
+    return true
+}
+
+function hasContents(xmlSource) {
+  return xmlSource.getElementsByTagName("Row").length > 0 ? true : false
+}
+
+function viewXML(what) {
+  var src = what.URL.value
+
+  if (src === '') {
+    alert('Empty URI')
+    return
+  }
+  xmlDoc = loadXML(src)
+  if (validateXML(xmlDoc)){
+    htmlDoc = generateHTML(xmlDoc)
+    newWindow = window.open("","","height=800,width=1200")
+    newWindow.document.write(htmlDoc)
+  }
+}
+
+function generateHTML (xmlSource) {
+  var htmlSource = '<html><body><table '+ tableOptions() +' >'
+
+  header = xmlSource.getElementsByTagName("Header")
+  rows = xmlSource.getElementsByTagName("Row")
+  htmlSource += buildTableHeader(header)
+  htmlSource += buildTableRows(rows)
+
+  htmlSource += '</table></body></html>'
+  return htmlSource
+}
+
+function tableOptions () {
+  return 'style="width:100%;" border=1'
+}
+
+function imageOptions () {
+  return 'style="width:100%;height:100%;"'
+}
+
+function buildTableHeader (header) {
+  data = header[0].getElementsByTagName("Data")
+  tableHeaderSource = '<tr>'
+
+  for (var i = 0; i < data.length; ++i) {
+    textSource = data[i].childNodes[0].nodeValue
+    tableHeaderSource += '<th>' + textSource + '</th>'
+  }
+  tableHeaderSource += '</tr>'
+
+  return tableHeaderSource
+}
+
+function buildTableRows (rows) {
+  tableRowsSource = ''
+
+  for (var i = 0; i < rows.length; ++i) {
+    tableRowsSource += '<tr>'
+
+    var textAirline = createAirlineTag(rows[i].getElementsByTagName("Airline")[0])
+    var textIata = createIATATag(rows[i].getElementsByTagName("IATA")[0])
+    var textHubs = createHubTag(rows[i].getElementsByTagName("Hubs")[0])
+    var textNotes = craeteNotestag(rows[i].getElementsByTagName("Notes")[0])
+    var textHomepage = createHomepageTag(rows[i].getElementsByTagName("HomePage")[0])
+    var textPlane = createPlaneTag(rows[i].getElementsByTagName("Plane")[0])
+
+    tableRowsSource += '<td>' + textAirline + '</td>'
+    tableRowsSource += '<td>' + textIata + '</td>'
+    tableRowsSource += '<td>' + textHubs + '</td>'
+    tableRowsSource += '<td>' + textNotes + '</td>'
+    tableRowsSource += '<td>' + textHomepage + '</td>'
+    tableRowsSource += '<td>' + textPlane + '</td>'
+
+    tableRowsSource += '</tr>'
+  }
+
+  return tableRowsSource
+}
+
+function isChildExist (node) {
+    return node.childNodes.length != 0 ? true : false
+}
+
+function createAirlineTag (node) {
+  var airlineTag = ''
+  if (isChildExist(node))
+    airlineTag += '<p>' + node.childNodes[0].nodeValue + '</p>'
+  return airlineTag
+}
+
+function createIATATag (node) {
+  var iataTag = ''
+  if (isChildExist(node))
+    iataTag += '<p>' + node.childNodes[0].nodeValue + '</p>'
+  return iataTag
+}
+
+function createHubTag (node) {
+  var hubTag = ''
+  if (isChildExist(node)){
+    hubList = node.getElementsByTagName('Hub')
+    hubTag += '<ul>'
+    hubTag += '<li><b>' + hubList[0].childNodes[0].nodeValue + '</b></li>'
+    for (var i = 1; i < hubList.length; ++i) {
+      hubTag += '<li>' + hubList[i].childNodes[0].nodeValue + '</li>'
+    }
+    hubTag += '</ul>'
+  }
+  return hubTag
+}
+
+function craeteNotestag (node) {
+  var notesTag = ''
+  if (isChildExist(node))
+    notesTag += '<p>' + node.childNodes[0].nodeValue + '</p>'
+  return notesTag
+}
+
+function createHomepageTag(node) {
+  var homepageTag = ''
+  if (isChildExist(node))
+    homepageTag += '<a href="' + node.childNodes[0].nodeValue + '">' +
+                  node.childNodes[0].nodeValue + '</a>'
+  return homepageTag
+}
+
+function createPlaneTag (node) {
+  var planeTag = ''
+  if (isChildExist(node))
+    planeTag += '<img src="' + node.childNodes[0].nodeValue + '" '+
+                    imageOptions() + ' />'
+  return planeTag
+}
+</script>
+</head>
+<body style="width:1104px; height:628px">
+<div style="margin: 25% 25%;">
+  <h5 style="text-align: center">Enter URL for Airlines List XML File</h5>
+  <form name="myform" method="POST" id="location">
+    <input type="text" name="URL" maxlength="255"
+      size="50" value="" style="margin: auto 25%"/>
+    <br />
+    <input type="button" name="submit" value="Submit Query"
+    onClick="viewXML(this.form)" style="text-align:center; margin: 1% 42%; font-size: 0.5em; width:80" />
+  </form>
+</div>
+</body>

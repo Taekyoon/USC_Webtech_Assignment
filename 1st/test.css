@@ -1,0 +1,286 @@
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 1100px;
+  width: 1440px;
+  margin: 0 auto;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.context a {
+  color: black;
+}
+
+.footer a {
+  color: white;
+}
+
+.context {
+  background-color: white;
+  margin: 0;
+}
+.context p {
+  text-align: center;
+}
+.footer {
+  color: white;
+  background-color: black;
+}
+
+.upper_button_space {
+  margin: 4% 35% 20% 35%;
+  height: 26%;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+.upper_button {
+  line-height: 3.5em;
+  color: white;
+  height: 68.5%;
+  padding: 10% 7%;
+}
+
+.text_location_favourites{
+  letter-spacing: 4.5px;
+  font-weight: 100;
+}
+
+.text_number {
+  text-decoration: underline;
+  font-size: 4em;
+  float: left;
+  margin-top: 7%;
+  margin-left: 20%;
+}
+
+.text_thirteen {
+  font-size: 7em;
+  float: left;
+  margin-top: 12%;
+}
+
+.img_sayhello {
+  margin-top: -16.5%;
+  padding-left: 4.5%
+}
+
+.text_content {
+  margin-top: -23.5%;
+}
+
+.text_content h3 {
+  text-align: center;
+  color: goldenrod;
+  font-weight: 100;
+  font-size: 100%;
+  letter-spacing: 5.8px;
+  line-height: 4em
+}
+
+.text_content p {
+  line-height: 1.3em;
+  text-align: center;
+  font-size: 125%
+}
+
+.lower_button_space {
+  margin: 5.5% 39% 10% 39%;  
+  letter-spacing: 3px;
+  font-size: 90%;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.lower_button {
+  cursor: pointer;
+  border-style: solid;
+  border-color: black;
+  border-width: 1%;
+  padding: 8% 27%;
+}
+
+.lower_button:hover {
+  background-color: black;
+  color: white;
+  transition: all 0.7s;
+}
+
+.signup_newspaper {
+  padding-top: 1%;
+  text-transform: uppercase;
+  background-color: black;
+  border-bottom-color: gray;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  height: 17.86%;
+}
+
+.signup_newspaper .col4 {
+  border-right-style: solid;
+  border-right-color: gray;
+  border-right-width: 1px;
+}
+
+.contact_info {
+  height: 35%;
+}
+
+.contact_info h2 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 100;
+  font-size: 105%;
+  color: goldenrod;
+}
+
+.contact_info h3 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 100;
+  font-size: 95%
+}
+
+.contact_info p {
+  font-weight: 100;
+  font-size: 95%;
+  line-height: 1.4em
+}
+
+.col3 {
+  margin-top: -1.4%;
+  width: 30%;
+  float: left;
+}
+
+.col4 {
+  width: 36.6%;
+  float: left;
+}
+
+.col5 {
+  margin-top: -2.9%;
+  width: 50%;
+  float: left;
+}
+
+.col6 {
+  width: 59.5%;
+  float: right;
+}
+
+.text_panel {
+  margin: 5% 10% 5% 10%;
+  padding: 12% 0%;
+  text-align: center;
+  letter-spacing: 6px;
+  font-weight: 100;
+}
+
+.text_panel:hover {
+  text-decoration: underline;
+}
+
+.text_form {
+  margin: 3% 6%;
+  font-weight: 100;
+  letter-spacing: 4px;
+  color: goldenrod;
+  line-height: 3.6em;
+}
+
+.headquater {
+  margin: 7% 10%
+}
+
+.headquater .contact {
+  margin-top: 33%;
+  margin-left: 15%;
+}
+
+.contact_us_space {
+  color: white;
+  padding: 10%;
+  margin-top: 27%;
+  width: 45%
+}
+
+.contact_us_test {
+  padding: 6% 15%;
+  background-color: black;
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 6px;
+  font-size: 80%;
+  cursor: pointer;
+}
+
+.contact_us_test:hover {
+  background-color: white;
+  color: black;
+  transition: all 0.7s;
+}
+
+.offices {
+  margin: 4.3% 0%
+}
+
+.offices .contact {
+  margin-top: 16%
+}
+
+.email {
+  text-decoration: underline;
+}
+
+.contact_attr_name {
+  color: goldenrod;
+}
+
+input[type=text] {
+  color: gray;
+  padding-left: .5em;
+  padding-right: .5em;
+  height: 30%;
+  width: 51%;
+  font-size: 125%;
+  text-align: left;
+}
+
+input[type=text]:focus {
+  color: black;
+}
+
+input[type=submit] {
+  margin: -4.1% 1%;
+  background-color: black;
+  color: white;
+  padding: 2.6% 11%;
+  border-style: solid;
+  border-color: white;
+  border-width: 3px;
+  cursor: pointer;
+  font-size: 90%;
+  font-weight: 200;
+  letter-spacing: 5px;
+  transition: all 0.7s
+}
+
+
+input[type=submit]:hover {
+  background-color: white;
+  color: black;
+}
