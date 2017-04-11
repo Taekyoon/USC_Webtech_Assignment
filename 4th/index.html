@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="fb_search"lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Test page for Facebook Searcher</title>
+  <!-- bootstrap and css source -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="design.css">
+  <!-- angularjs source -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+  <script src="fb_viewer.js"></script>
+  <!-- font-awesome source -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body ng-controller="fb_search_form">
+<!-- facebook SDk service -->
+<script>
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '225410634597276',
+    xfbml      : true,
+    version    : 'v2.8'
+  });
+  FB.AppEvents.logPageView();
+};
+(function(d, s, id){
+   var js, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement(s); js.id = id;
+   js.src = "https://connect.facebook.net/en_US/sdk.js";
+   fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+</script>
+<nav class="navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="javascript:void(0)" ng-click="main()">
+            <p class="text-primary">FB Search</p>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="navbar-form">
+          <form class="form-group" ng-submit="submit()">
+            <div class="input-group">
+              <input type="text" class="navbar-comp form-control" ng-model='text' placeholder="Search">
+              <span class="input-group-btn">
+                <button type="submit" class="navbar-comp btn btn-default btn-submit">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </span>
+            </div>
+            <button type="reset" class="navbar-comp btn btn-default btn-reset">
+              <span>Clear</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-toggleable-md">
+      <ul class="nav nav-pills nav-justified">
+        <li ng-class="{ active: selected.user }"><a href="#user">Users</a></li>
+        <li ng-class="{ active: selected.page }"><a href="#page">Pages</a></li>
+        <li ng-class="{ active: selected.event }"><a href="#event">Events</a></li>
+        <li ng-class="{ active: selected.place }"><a href="#place">Places</a></li>
+        <li ng-class="{ active: selected.group }"><a href="#group">Groups</a></li>
+        <li ng-class="{ active: selected.favorite }"><a href="#favorite">Favorites</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="progress-area" ng-show="showSearchProgress">
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+      <span class="sr-only">45% Complete</span>
+    </div>
+  </div>
+</div>
+<div ng-view class="view" ng-class="{ slide-left: doSlideToLeft, slide-right: doSlideToRight }"></div>
+</body>
+</html>

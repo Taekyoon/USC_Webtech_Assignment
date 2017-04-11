@@ -1,0 +1,70 @@
+<div class="detail-results" ng-show="showDetail">
+  <div class="btn-area">
+    <button type="button" class="btn btn-default back-button" ng-click="back()">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      Back
+    </button>
+    <span class="rightside-button">
+      <button type="button" class="btn btn-default favorite-button" ng-class="{ favoriteSelected : favorite }" ng-click="set_favorite(favorite, user)">
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default post-button" ng-click="share_this(user)">
+        <i class="fa fa-facebook-square" style="font-size:24px;color:#3b5998"></i>
+      </button>
+    </span>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Albums</div>
+        <div class="panel-body">
+          <div class="progress" ng-show="!albumExist&&!albumErrorExist">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+              <span class="sr-only">45% Complete</span>
+            </div>
+          </div>
+          <div class="panel panel-default" ng-repeat="album in albums">
+            <div class="panel-heading" >
+              <a href="javascript:void(0)" data-toggle="collapse" ng-click="show(album, albums)">{{ album.name }}</a>
+            </div>
+            <div class="panel-body" ng-show="album.showAlbum">
+              <img src="{{ photo.picture }}" alt="{{ photo.id }}" class="album-photo img-rounded" ng-repeat="photo in album.photos.data"/>
+            </div>
+          </div>
+          <div class="alert alert-warning" ng-show="albumErrorExist">
+            No data found
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">Posts</div>
+        <div class="panel-body">
+          <div class="progress" ng-show="!postExist&&!postErrorExist">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+              <span class="sr-only">45% Complete</span>
+            </div>
+          </div>
+          <div class="panel panel-default" ng-repeat="post in posts">
+            <div class="panel-body">
+              <div class="post-info">
+                <img src="{{ user.picture }}" width="45px"/>
+                <span>
+                  <h5>{{ user.name }}</h5>
+                  <p>{{ post.created_time | date : "yyyy-MM-dd HH:mm:ss"}}</p>
+                </span>
+              </div>
+              <div class="post-message">
+                <p>{{ post.message }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-warning" ng-show="postErrorExist">
+            No data found
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

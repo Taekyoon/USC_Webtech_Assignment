@@ -1,0 +1,161 @@
+usc.btn-submit {
+  width: 100%;
+  background-color: #3b5998;
+}
+
+.btn-reset {
+  margin-left: 3%;
+  border-color: #3b5998;
+  color: #3b5998;
+}
+
+.detail-results {
+  width: 90%;
+  margin: auto;
+}
+
+.detail-results .album-photo {
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+.detail-results .btn-area {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.detail-results .panel-heading a:not(:hover) {
+  color: black;
+}
+
+.detail-results .rightside-button {
+  width: 10%;
+  float: right;
+}
+
+.detail-results .post-button {
+  float: right;
+  padding: 3.5px 11px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.glyphicon-search {
+  color: white;
+}
+
+.input-group {
+  width: 80%;
+}
+
+.input-group-btn {
+  width: 40%;
+}
+
+.navbar-comp {
+  height: 40px;
+  border-radius: 0px;
+}
+
+.navbar-default {
+  padding-top: 0.5%;
+}
+
+.navbar-form {
+  width: 100%;
+}
+
+.navbar-header {
+  margin-left: 20px;
+}
+
+.navbar-header .text-primary {
+  color: #3b5998;
+  font-size: large;
+}
+
+.nav-pills {
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-color: #3b5998;
+}
+
+.nav-pills > li {
+  text-align: center;
+}
+
+.nav-pills > li > a {
+  padding-top: 7%;
+  padding-bottom: 7%;
+  margin-bottom: -0.58%;
+  border-radius: 0px;
+  color: black;
+  
+}
+
+.nav-pills > li.active > a{
+    background-color: #3b5998;
+}
+
+.post-info {
+  margin-bottom: 5%;
+  vertical-align: center;
+}
+
+.post-info img {
+  float: left;
+  margin-right: 3.1%;
+}
+
+.post-info p {
+  margin-top: -0.5%;
+  font-size: small;
+  color: gray;
+}
+
+.table {
+  width: 100%;
+}
+
+.table >tbody > tr td {
+  vertical-align: middle;
+}
+
+.table thead >tr th {u
+  padding-top: 1.3%;
+  padding-bottom: 1.3%;
+  vertical-align: middle;
+}
+
+.search-results {
+  width: 90%;
+  margin: 2% auto;
+}
+
+.view {
+  transition:0.5s linear all;
+}
+
+.progress {
+  width: 80%;
+  margin: auto;
+}
+
+.progress-area {
+  padding-top: 10%;
+}
+
+.favoriteSelected {
+  color: khaki;
+}
+
+.slide-left {
+  transition:0.5s linear all;
+}
+
+.slide-left.ng-hide {
+  transform: translateX(100%)
+}

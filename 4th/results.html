@@ -1,0 +1,42 @@
+<div class="search-results">
+  <table class="table table-striped table-hover" ng-show="resultExist">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Profile Photo</th>
+      <th>Name</th>
+      <th ng-show="favoritePage">Type</th>
+      <th>Favorite</th>
+      <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in search_results">
+      <td>{{ $index + 1 }}</td>
+      <td><a href="{{ x.picture.data.url }}">
+        <img class="img-circle" ng-show="!favoritePage" src="{{ x.picture.data.url }}" width="50px"/>
+        <img class="img-circle" ng-show="favoritePage" src="{{ x.picture }}" width="50px"/>
+      </a></td>
+      <td>{{ x.name }}</td>
+      <td ng-show="favoritePage">{{ x.type }}</td>
+      <td>
+      <button type="button" class="btn btn-default" ng-show="!favoritePage"
+        ng-class="{ favoriteSelected : x.favorite }" ng-click="set_favorite(x, type, $index)">
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn btn-default" ng-show="favoritePage"
+        ng-class="{ favoriteSelected : x.favorite }" ng-click="delete_favorite(x, $index)">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+      </td>
+      <td><button type="button" class="btn btn-default" ng-click="get_detail(x, type)">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <button type="button" class="btn btn-default" ng-if="showPrev" ng-click="move(false,move_url,type)">Previous</button>
+    <button type="button" class="btn btn-default" ng-if="showNext" ng-click="move(true,move_url,type)">Next</button>
+  </div>
+</div>
